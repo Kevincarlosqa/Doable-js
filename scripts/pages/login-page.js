@@ -6,15 +6,14 @@ function renderHeader(logout) {
   return `
     <header>
       <nav>
-        <h1>{ do<span>able</span> }</h1>
-        ${logout? `<a>Logout</a>` : ""}
+      <h1>{ do<span>able</span> }</h1>
+          ${logout? `<a>Logout</a>` : ""}
       </nav>
     </header>
   `
 }
 
 
-renderHeader()
 
 
 
@@ -23,7 +22,7 @@ renderHeader()
 function loginPage() {
   return {
     toString(){
-
+      return renderHeader()
     },
     addListeners(){
 
@@ -31,3 +30,5 @@ function loginPage() {
   }
 
 }
+
+export default loginPage
