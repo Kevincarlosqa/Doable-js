@@ -4,10 +4,10 @@ function render() {
 
 function renderHeader(logout) {
   return `
-    <header>
-      <nav>
-      <h1>{ do<span>able</span> }</h1>
-          ${logout? `<a>Logout</a>` : ""}
+    <header class="header">
+      <nav class="navbar">
+        <img class="logo" src="./imgs/doable-logo.png">
+        ${logout? `<a><img src="./imgs/logout.png"></a>` : ""}
       </nav>
     </header>
   `
@@ -22,6 +22,7 @@ function renderHeader(logout) {
 function loginPage() {
   return {
     toString(){
+      let logout = "log"
       return renderHeader()
     },
     addListeners(){
