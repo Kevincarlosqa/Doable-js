@@ -5,6 +5,7 @@ import { renderHeader } from "../components/render.js"
 import { logout } from "../services/session-service.js"
 import tasks from "../components/tasks.js"
 import { dateFormat } from "../components/utils.js"
+import { input } from "../components/input.js"
 
 function render() {
   const logout = "logout"
