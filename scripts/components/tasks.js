@@ -25,8 +25,9 @@ function renderTasks(task) {
           ${task.title}
           <p class="task__date" for="${task.id}">${dateFormat(task.due_date)}</p> 
       </label>
-        ${task.important? `<img class="logo-task" src="../imgs/important.png">`:`<img class="logo-task" src="../imgs/notImportant.png">`}
-        
+        ${task.important? 
+          `<img class="logo-task" src="../imgs/important.png">`:`<img class="logo-task" src="../imgs/notImportant.png">`
+        }
     </div>
 `
 }

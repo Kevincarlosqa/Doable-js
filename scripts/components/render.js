@@ -1,3 +1,5 @@
+import { input } from "./input.js"
+
 function renderHeader(logout) {
   return `
     <header class="header">
@@ -9,4 +11,29 @@ function renderHeader(logout) {
   `
 }
 
-export { renderHeader }
+function renderNewTask() {
+  return `
+  <main class="section">
+    <section class="container">
+      <form class="flex flex-column gap-1 mb-4 js-login-form">
+
+        ${input({
+          id: "email",
+          name: "email",
+          placeholder: "do the dishes...",
+          required: true,
+        })}
+
+        ${input({
+          id: "password",
+          name: "password",
+          placeholder: "mm / dd / yy",
+        })}        
+       
+        <button class="button button--primary">Add Task</button>
+      </form>
+    </section>
+  </main>`
+}
+
+export { renderHeader, renderNewTask }

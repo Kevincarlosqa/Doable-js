@@ -2,6 +2,7 @@ import { root, tokenKey } from "../config.js"
 import DOMHandler from "../dom-handler.js"
 import loginPage from "./login-page.js"
 import { renderHeader } from "../components/render.js"
+import { renderNewTask } from "../components/render.js"
 import { logout } from "../services/session-service.js"
 import tasks from "../components/tasks.js"
 import { dateFormat } from "../components/utils.js"
@@ -13,6 +14,7 @@ function render() {
   ${renderHeader(logout)}
     <h1>Tasks</h1>
     ${tasks}
+    ${renderNewTask()}
   `
 }
 
