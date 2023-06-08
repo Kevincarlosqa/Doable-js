@@ -1,9 +1,11 @@
 import DOMHandler from "./scripts/dom-handler.js";
 import loginPage from "./scripts/pages/login-page.js";
+import tasksPage from "./scripts/pages/tasks-page.js";
+import { tokenKey, root } from "./scripts/config.js";
 import { login, logout, signUp } from "./scripts/services/session-service.js";
 import { taskList, showTask, createTask, deleteTask, editTask } from "./scripts/services/task-service.js";
 
-// const root = document.querySelector("#root")
+
 // let load
 // DOMHandler.load(loginPage(), root)
 
@@ -23,3 +25,19 @@ const credentials = {
 
 // logout()
 
+async function init() {
+	//  logica de Inicio
+	try {
+		const token = sessionStorage.getItem(tokenKey)
+		if(!token) throw new Error
+		// console.log(STORE.user);
+		// await STORE.fetchContacts()
+		DOMHandler.load(tasksPage(), root)
+	} catch (error) {
+		sessionStorage.removeItem(tokenKey)
+		DOMHandler.load(loginPage(),root)
+		console.log(error);
+	}
+}
+
+init()
