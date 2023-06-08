@@ -5,6 +5,7 @@ import signUpPage from "./signup-page.js"
 import { login } from "../services/session-service.js"
 import tasksPage from "./tasks-page.js"
 import { root } from "../config.js"
+import STORAGE from "../storage.js"
 
 function render() {
   // const loginError = this.state.loginError
@@ -56,13 +57,14 @@ function listenSubmit() {
   form.addEventListener("submit", async (event) => {
     try {
       event.preventDefault()
-      console.log("submit")
       const { email, password } = event.target.elements
       const credentials = {
         email: email.value,
         password: password.value
       }
       const user = await login(credentials)
+      STORAGE.user = user
+      await STORAGE.fetchTasks()
       DOMHandler.load(tasksPage(),root)
       
     } catch (error) {
@@ -72,11 +74,6 @@ function listenSubmit() {
 
   })
 }
-
-
-
-
-
 
 function loginPage() {
   return {

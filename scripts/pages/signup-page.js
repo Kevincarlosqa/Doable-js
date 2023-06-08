@@ -72,8 +72,6 @@ function listenSignUpForm() {
   })
 }
 
-
-
 function signUpPage() {
   return {
     toString(){
