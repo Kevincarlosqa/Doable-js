@@ -47,7 +47,16 @@ function tasksAlphabetical(tasks) {
 }
 
 function tasksImportance(tasks) {
-  tasks.sort((a, b) => a.due_date.localeCompare(b.title))
+  tasks.sort((a, b) => {
+    if (a.important && !b.important) {
+      return -1;
+    }
+    if (!a.important && b.important) {
+      return 1;
+    }
+    return 0;
+  })
+  console.log(tasks);
   return tasks
 }
 
@@ -68,4 +77,8 @@ function tasksDueDate(tasks) {
   return tasks
 }
 
-export { dateFormat, dateStructure, tasksAlphabetical, tasksDueDate }
+export { dateFormat, 
+         dateStructure, 
+         tasksAlphabetical, 
+         tasksDueDate, 
+         tasksImportance }
