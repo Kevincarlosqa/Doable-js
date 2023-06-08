@@ -37,7 +37,7 @@ function render() {
        
         <button class="button button--primary">Login</button>
       </form>
-      <a class="block text-center js-signup-link">Create Account</a>
+      <a class="block primary-300 text-center js-signup-link">Create Account</a>
     </section>
   </main>`
 }
@@ -45,7 +45,6 @@ function render() {
 function listenSignUp() {
   const signUp = document.querySelector(".js-signup-link")
   signUp.addEventListener("click", () => {
-    console.log("Sign up");
 
     DOMHandler.load(signUpPage(), root)
 

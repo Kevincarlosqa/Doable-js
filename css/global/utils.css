@@ -24,6 +24,11 @@
   color: var(--primary-500);
 }
 
+.primary-300 {
+  color: var(--primary-300);
+  font-weight: 600;
+}
+
 .gray-200 {
   color: var(--gray-200);
 }
