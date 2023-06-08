@@ -1,7 +1,7 @@
 import STORAGE from "../storage.js"
 import { dateFormat } from "./utils.js";
 import { input } from "./input.js";
-import { tasksAlphabetical } from "./utils.js";
+import { tasksAlphabetical, tasksDueDate } from "./utils.js";
 
 function renderTasks(task) {
   return `
@@ -24,7 +24,7 @@ function renderTasks(task) {
 
 function render() {
 
-  const tasks = tasksAlphabetical(STORAGE.tasks) 
+  const tasks = tasksDueDate(STORAGE.tasks) 
   return `
     <div class="js-tasks-list">
       ${tasks.map(task => renderTasks(task)).join("")}

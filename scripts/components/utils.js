@@ -45,4 +45,27 @@ function tasksAlphabetical(tasks) {
   tasks.sort((a, b) => a.title.localeCompare(b.title))
   return tasks
 }
-export { dateFormat, dateStructure, tasksAlphabetical }
+
+function tasksImportance(tasks) {
+  tasks.sort((a, b) => a.due_date.localeCompare(b.title))
+  return tasks
+}
+
+function tasksDueDate(tasks) {  
+  tasks.sort((a, b) => {
+  const fechaA = new Date(a.due_date);
+  const fechaB = new Date(b.due_date);
+
+  if (fechaA > fechaB) {
+    return -1;
+  }
+  if (fechaA < fechaB) {
+    return 1;
+  }
+  return 0;
+  });
+  console.log(tasks);
+  return tasks
+}
+
+export { dateFormat, dateStructure, tasksAlphabetical, tasksDueDate }
