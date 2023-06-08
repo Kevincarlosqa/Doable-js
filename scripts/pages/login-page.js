@@ -1,6 +1,7 @@
 import { input } from "../components/input.js"
 import { renderHeader } from "../components/render.js"
 import DOMHandler from "../dom-handler.js"
+import signUpPage from "./signup-page.js"
 import { login } from "../services/session-service.js"
 import tasksPage from "./tasks-page.js"
 import { root } from "../config.js"
@@ -41,6 +42,16 @@ function render() {
   </main>`
 }
 
+function listenSignUp() {
+  const signUp = document.querySelector(".js-signup-link")
+  signUp.addEventListener("click", () => {
+    console.log("Sign up");
+
+    DOMHandler.load(signUpPage(), root)
+
+  })
+}
+
 function listenSubmit() {
   const form = document.querySelector(".js-login-form")
   form.addEventListener("submit", async (event) => {
@@ -74,7 +85,8 @@ function loginPage() {
       return render()
     },
     addListeners(){
-      listenSubmit()
+      listenSubmit(),
+      listenSignUp()
     }
   }
 
