@@ -3,7 +3,7 @@ function renderHeader(logout) {
     <header class="header">
       <nav class="navbar">
         <img class="logo" src="./imgs/doable-logo.png">
-        ${logout? `<a><img src="./imgs/logout.png"></a>` : ""}
+        ${logout? `<a class="js-logout-link"><img src="./imgs/logout.png"></a>` : ""}
       </nav>
     </header>
   `
