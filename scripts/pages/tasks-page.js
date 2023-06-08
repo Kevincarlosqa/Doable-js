@@ -6,7 +6,7 @@ import { logout } from "../services/session-service.js"
 import tasks from "../components/tasks.js"
 import { dateStructure } from "../components/utils.js"
 import { input } from "../components/input.js"
-import { createTask } from "../services/task-service.js"
+import { createTask, editTask } from "../services/task-service.js"
 import STORAGE from "../storage.js"
 
 function render() {
@@ -72,15 +72,23 @@ function listenShowImportant(){
 }
 
 function listenCheckTask() {
-  
   const checkTask = document.querySelector(".js-tasks-list")
-  checkTask.addEventListener("click", (event) => {
-    console.log("click");
+  checkTask.addEventListener("change", (event) => {
     const check = event.target.closest("[data-id]")
     if(!check) return
-    console.log(check.checked);
+    // console.log(check.checked);
   })
-  
+}
+
+function listenImportantTask() {
+  const checkTask = document.querySelector(".js-tasks-list")
+  checkTask.addEventListener("click", async (event) => {
+    const logoTask = event.target.closest("[data-logo]")
+    if(!logoTask) return
+    let task = STORAGE.tasks.find(task => task.id === +logoTask.dataset.logo)
+    task.important? task.important = false : task.important = true
+    await editTask({...task},task.id).then(data => DOMHandler.reload())
+  })
 }
 
 function tasksPage() {
@@ -94,6 +102,7 @@ function tasksPage() {
       listenShowPending()
       listenShowImportant()
       listenCheckTask()
+      listenImportantTask()
     }
   }
 
