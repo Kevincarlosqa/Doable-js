@@ -3,7 +3,6 @@ import { dateFormat } from "./utils.js";
 import { input } from "./input.js";
 
 function renderTasks(task) {
-  console.log(task.id);
   return `
     <div class="flex justify-between task" >
       <label for="${task.id}" >
@@ -13,9 +12,11 @@ function renderTasks(task) {
             `<p class="task__date" for="${task.id}">${dateFormat(task.due_date)}</p>` : "" }
           
       </label>
+      <div class="js-important-logo">
         ${task.important? 
           `<img class="logo-task" src="../imgs/important.png">`:`<img class="logo-task" src="../imgs/notImportant.png">`
         }
+      </div>
     </div>
 `
 }
@@ -23,7 +24,6 @@ function renderTasks(task) {
 function render() {
 
   const tasks = STORAGE.tasks
-  console.log(tasks);
   return `
     <div class="js-tasks-list">
       ${tasks.map(task => renderTasks(task)).join("")}

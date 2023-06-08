@@ -1,5 +1,6 @@
 function dateFormat(dateString) {
   const date = new Date(dateString)
+
   const daysOfTheWeek = ['Sunday',
                          'Monday', 
                          'Tuesday', 
@@ -21,12 +22,23 @@ function dateFormat(dateString) {
                            'November', 
                            'December'];
   
-  let dayOfWeek = daysOfTheWeek[date.getDay()];
+                           
+  let dayOfWeek = daysOfTheWeek[date.getDay()+1];
   let month = monthsOfTheYear[date.getMonth()];
   let day = date.getDate();
 
-  let dateFormat = dayOfWeek + ', ' + month + ' ' + day;
+  let dateFormat = dayOfWeek + ', ' + month + ' ' + String(day+1);
   return dateFormat
 }
 
-export { dateFormat }
+function dateStructure(newDate) {
+  let parts = newDate.split("/")
+  let year = parts[2]
+  let month = parts[0]
+  let day = parts[1]
+
+  let dateStructured = year + "-" + month + "-" + day
+  return dateStructured
+}
+
+export { dateFormat, dateStructure }

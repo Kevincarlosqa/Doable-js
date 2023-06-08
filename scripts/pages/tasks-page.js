@@ -4,7 +4,7 @@ import loginPage from "./login-page.js"
 import { renderHeader, renderNewTask, renderShow, renderSort } from "../components/render.js"
 import { logout } from "../services/session-service.js"
 import tasks from "../components/tasks.js"
-import { dateFormat } from "../components/utils.js"
+import { dateStructure } from "../components/utils.js"
 import { input } from "../components/input.js"
 import { createTask } from "../services/task-service.js"
 import STORAGE from "../storage.js"
@@ -40,7 +40,8 @@ function listenAddTask() {
     try {
       event.preventDefault()
       const { newTasks, newDate} = event.target.elements
-      const taskCreated = await createTask({title: newTasks.value, due_date: newDate.value})
+      const dateFormated = dateStructure(newDate.value)
+      const taskCreated = await createTask({title: newTasks.value, due_date: dateFormated})
       console.log(taskCreated);
       await STORAGE.fetchTasks().then(data => {
         DOMHandler.reload()})
@@ -52,6 +53,20 @@ function listenAddTask() {
   })
 }
 
+function listenShowPending(){
+  const pending = document.getElementById("pending")
+  pending.addEventListener("change", (event) => {
+    console.log("Pending");
+  })
+}
+
+function listenShowImportant(){
+  const important = document.getElementById("important")
+  important.addEventListener("change", (event) => {
+    console.log("Important");
+  })
+}
+
 function tasksPage() {
   return {
     toString(){
@@ -60,6 +75,8 @@ function tasksPage() {
     addListeners(){
       listenLogout()
       listenAddTask()
+      listenShowPending()
+      listenShowImportant()
     }
   }
 

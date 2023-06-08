@@ -56,11 +56,11 @@ function renderShow() {
       <p>Show</p>
       <div>
         <label for="pending" >
-          <input type="checkbox" id="pending" name="pending" >
+          <input type="radio" id="pending" name="importantShow" >
           Only Pending
         </label>
         <label for="important" >
-          <input type="checkbox" id="important" name="important" >
+          <input type="radio" id="important" name="importantShow" >
           Only important
         </label>
       </div>
