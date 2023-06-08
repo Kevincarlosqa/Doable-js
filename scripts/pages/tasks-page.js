@@ -73,10 +73,14 @@ function listenShowImportant(){
 
 function listenCheckTask() {
   const checkTask = document.querySelector(".js-tasks-list")
-  checkTask.addEventListener("change", (event) => {
+  checkTask.addEventListener("change", async (event) => {
     const check = event.target.closest("[data-id]")
     if(!check) return
-    // console.log(check.checked);
+    console.log(check);
+    let task = STORAGE.tasks.find(task => task.id === +check.dataset.id)
+    console.log(task);
+    task.completed? task.completed = false : task.completed = true
+    await editTask({...task},task.id).then(data => DOMHandler.reload())
   })
 }
 
