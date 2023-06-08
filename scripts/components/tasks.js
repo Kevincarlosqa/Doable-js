@@ -4,9 +4,9 @@ import { input } from "./input.js";
 
 function renderTasks(task) {
   return `
-    <div class="flex justify-between task" >
+    <div class="flex justify-between js-checkTask task" >
       <label for="${task.id}" >
-          <input type="checkbox" id="${task.id}" name="${task.id}" >
+          <input type="checkbox" id="${task.id}" data-id=${task.id} name="${task.id}" ${task.completed? `checked`:""} >
           ${task.title}
           ${task.due_date? 
             `<p class="task__date" for="${task.id}">${dateFormat(task.due_date)}</p>` : "" }
@@ -20,6 +20,17 @@ function renderTasks(task) {
     </div>
 `
 }
+
+
+// const checkboxes = document.querySelectorAll('.task__date input[type="checkbox"]');
+//   checkboxes.forEach(checkbox => {
+//     checkbox.addEventListener("click", (event) => {
+//       const taskId = event.target.dataset.id;
+//       console.log("click");
+//       // Realizar acciones según el estado del checkbox y el ID de la tarea
+//     })})
+
+
 
 function render() {
 
@@ -37,7 +48,6 @@ const tasks = {
     return render.call(this)
   },
   addListeners() {
-    listenContact.call(this)
   },
 }
 export default tasks

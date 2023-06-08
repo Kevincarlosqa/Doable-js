@@ -55,28 +55,45 @@ function listenAddTask() {
 
 function listenShowPending(){
   const pending = document.getElementById("pending")
-  pending.addEventListener("change", (event) => {
+  pending.addEventListener("change", async (event) => {
     console.log("Pending");
+    await STORAGE.pendingStorage().then(data => {
+      DOMHandler.reload()})
   })
 }
 
 function listenShowImportant(){
   const important = document.getElementById("important")
-  important.addEventListener("change", (event) => {
+  important.addEventListener("change", async (event) => {
     console.log("Important");
+    await STORAGE.importantStorage().then(data => {
+      DOMHandler.reload()})
   })
+}
+
+function listenCheckTask() {
+  
+  const checkTask = document.querySelector(".js-tasks-list")
+  checkTask.addEventListener("click", (event) => {
+    console.log("click");
+    const check = event.target.closest("[data-id]")
+    if(!check) return
+    console.log(check.checked);
+  })
+  
 }
 
 function tasksPage() {
   return {
     toString(){
-      return render()
+      return render.call(this)
     },
     addListeners(){
       listenLogout()
       listenAddTask()
       listenShowPending()
       listenShowImportant()
+      listenCheckTask()
     }
   }
 
