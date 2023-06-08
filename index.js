@@ -3,6 +3,7 @@ import loginPage from "./scripts/pages/login-page.js";
 import tasksPage from "./scripts/pages/tasks-page.js";
 import { tokenKey, root } from "./scripts/config.js";
 import STORAGE from "./scripts/storage.js";
+import { tasksAlphabetical } from "./scripts/components/utils.js";
 import { login, logout, signUp } from "./scripts/services/session-service.js";
 import { taskList, showTask, createTask, deleteTask, editTask } from "./scripts/services/task-service.js";
 
@@ -33,6 +34,7 @@ async function init() {
 		if(!token) throw new Error
 		// console.log(STORE.user);
 		await STORAGE.fetchTasks()
+    tasksAlphabetical(STORAGE.tasks)
 		DOMHandler.load(tasksPage(), root)
 	} catch (error) {
 		sessionStorage.removeItem(tokenKey)

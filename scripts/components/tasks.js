@@ -1,6 +1,7 @@
 import STORAGE from "../storage.js"
 import { dateFormat } from "./utils.js";
 import { input } from "./input.js";
+import { tasksAlphabetical } from "./utils.js";
 
 function renderTasks(task) {
   return `
@@ -21,27 +22,15 @@ function renderTasks(task) {
 `
 }
 
-
-// const checkboxes = document.querySelectorAll('.task__date input[type="checkbox"]');
-//   checkboxes.forEach(checkbox => {
-//     checkbox.addEventListener("click", (event) => {
-//       const taskId = event.target.dataset.id;
-//       console.log("click");
-//       // Realizar acciones según el estado del checkbox y el ID de la tarea
-//     })})
-
-
-
 function render() {
 
-  const tasks = STORAGE.tasks
+  const tasks = tasksAlphabetical(STORAGE.tasks) 
   return `
     <div class="js-tasks-list">
       ${tasks.map(task => renderTasks(task)).join("")}
     </div>
   `
 }
-
 
 const tasks = {
   toString() {

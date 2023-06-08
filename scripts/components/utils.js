@@ -41,4 +41,8 @@ function dateStructure(newDate) {
   return dateStructured
 }
 
-export { dateFormat, dateStructure }
+function tasksAlphabetical(tasks) {
+  tasks.sort((a, b) => a.title.localeCompare(b.title))
+  return tasks
+}
+export { dateFormat, dateStructure, tasksAlphabetical }
