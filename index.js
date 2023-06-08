@@ -31,7 +31,7 @@ async function init() {
 		const token = sessionStorage.getItem(tokenKey)
 		if(!token) throw new Error
 		// console.log(STORE.user);
-		// await STORE.fetchContacts()
+		await STORE.fetchTasks()
 		DOMHandler.load(tasksPage(), root)
 	} catch (error) {
 		sessionStorage.removeItem(tokenKey)

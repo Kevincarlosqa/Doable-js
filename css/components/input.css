@@ -23,6 +23,20 @@
   width: 100%;
 }
 
+.select-sort__input {
+  border: 1px solid var(--gray-200);
+  padding: 0.5em 0.75em;
+  border-radius: 0.375em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  background-color: white;
+  width: 15.6rem;
+}
+
+
+
+
 .select__input:hover {
   cursor: pointer;
 }

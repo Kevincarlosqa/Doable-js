@@ -2,20 +2,6 @@ import STORAGE from "../storage.js"
 import { dateFormat } from "./utils.js";
 import { input } from "./input.js";
 
-// <fieldset>
-//     <legend>Choose your monster's features:</legend>
-
-    // <div>
-    //   <input type="checkbox" id="scales" name="scales" checked>
-    //   <label for="scales">Scales</label>
-    // </div>
-
-//     <div>
-//       <input type="checkbox" id="horns" name="horns">
-//       <label for="horns">Horns</label>
-//     </div>
-// </fieldset>
-
 function renderTasks(task) {
   console.log(task.id);
   return `
@@ -23,7 +9,9 @@ function renderTasks(task) {
       <label for="${task.id}" >
           <input type="checkbox" id="${task.id}" name="${task.id}" >
           ${task.title}
-          <p class="task__date" for="${task.id}">${dateFormat(task.due_date)}</p> 
+          ${task.due_date? 
+            `<p class="task__date" for="${task.id}">${dateFormat(task.due_date)}</p>` : "" }
+          
       </label>
         ${task.important? 
           `<img class="logo-task" src="../imgs/important.png">`:`<img class="logo-task" src="../imgs/notImportant.png">`
@@ -33,6 +21,7 @@ function renderTasks(task) {
 }
 
 function render() {
+
   const tasks = STORAGE.tasks
   console.log(tasks);
   return `
