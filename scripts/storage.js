@@ -66,8 +66,10 @@ const STORAGE = {
   sortTasksImportant,
   setSort(sort) {
     this.actualSort = sort
+    localStorage.setItem("Actual Sort", this.actualSort)
   },
   setShow() {
+    localStorage.setItem("Actual Show", this.actualShow)
     if(this.pending == false && this.important == false) {
       this.actualShow = 0
     } else if(this.pending == true && this.important == false) {
