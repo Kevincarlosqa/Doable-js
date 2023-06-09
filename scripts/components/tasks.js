@@ -30,6 +30,7 @@ function render() {
   console.log(show);
   let actualState = states(sort, show)
   console.log(actualState);
+  // selectedLib(actualState)
   const tasks = STORAGE.tasks
   console.log(tasks);
   return `

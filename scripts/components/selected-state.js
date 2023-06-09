@@ -27,20 +27,25 @@ async function selectedLib(state){
   switch (state) {
     case 0:
       STORAGE.setSort("Alphabetical (a-z)")
+      STORAGE.setShow()
       await STORAGE.sortTasksAlphabetical().then(dat => {
         DOMHandler.reload()})
       break;
     case 1:
       STORAGE.setSort("Due date")
+      STORAGE.setShow()
       await STORAGE.sortTasksDueDate().then(dat => {
         DOMHandler.reload()})
       break;
     case 2:
       STORAGE.setSort("Importance")
+      STORAGE.setShow()
       await STORAGE.sortTasksImportant().then(dat => {
         DOMHandler.reload()})
       break;
     case 3:
+      STORAGE.setSort("Alphabetical (a-z)")
+      STORAGE.setShow()
       await STORAGE.pendingStorage().then((data) => {
         console.log(STORAGE.tasks);
         STORAGE.sortTasksAlphabetical(STORAGE.tasks)
@@ -50,17 +55,21 @@ async function selectedLib(state){
       break;
     case 4:
       STORAGE.setSort("Due date")
+      STORAGE.setShow()
       await STORAGE.sortTasksDueDate().then(dat => {
         STORAGE.pendingStorage(STORAGE.tasks)
         DOMHandler.reload()})
       break;
     case 5:
       STORAGE.setSort("Importance")
+      STORAGE.setShow()
       await STORAGE.sortTasksImportant().then(dat => {
         STORAGE.pendingStorage(STORAGE.tasks)
         DOMHandler.reload()})
       break;
     case 6:
+      STORAGE.setSort("Alphabetical (a-z)")
+      STORAGE.setShow()
       await STORAGE.importantStorage().then(data => {
         console.log(STORAGE.tasks);
         STORAGE.sortTasksAlphabetical(STORAGE.tasks)
@@ -69,21 +78,49 @@ async function selectedLib(state){
       break;
     case 7:
       STORAGE.setSort("Due date")
+      STORAGE.setShow()
       await STORAGE.sortTasksDueDate().then(dat => {
         STORAGE.importantStorage(STORAGE.tasks)
         DOMHandler.reload()})
       break;
     case 8:
       STORAGE.setSort("Importance")
+      STORAGE.setShow()
       await STORAGE.sortTasksImportant().then(dat => {
         STORAGE.importantStorage(STORAGE.tasks)
         DOMHandler.reload()})
       break;
     case 9:
-      
+      STORAGE.setSort("Alphabetical (a-z)")
+      STORAGE.setShow()
+      await STORAGE.pendingStorage().then(dat => {
+        STORAGE.importantStorage(STORAGE.tasks)
+        DOMHandler.reload()
+      })
       break;
+    case 10:
+      STORAGE.setSort("Due date")
+      STORAGE.setShow()
+      await STORAGE.sortTasksDueDate().then(dat => {
+        STORAGE.pendingStorage(STORAGE.tasks).then(dat => {
+          STORAGE.importantStorage(STORAGE.tasks)
+          DOMHandler.reload()
+      })
+      })
+      break;
+    case 11:
+      STORAGE.setSort("Importance")
+        STORAGE.setShow()
+        await STORAGE.pendingStorage().then(dat => {
+          STORAGE.importantStorage(STORAGE.tasks)
+          DOMHandler.reload()
+        })
+        break;
   
     default:
+      const state = states(STORAGE.actualSort, STORAGE.actualShow)
+      console.log(state);
+      await selectedLib(state)
       break;
   }
 }

@@ -125,25 +125,28 @@ function listenSelectSort() {
   sort.addEventListener("change", async (event) => {
     if(event.target.value == "Alphabetical (a-z)"){
       STORAGE.setSort("Alphabetical (a-z)")
+      STORAGE.actualShow
       // await STORAGE.sortTasksAlphabetical().then(dat => {
       //   DOMHandler.reload()
       // })
-      const state = states(event.target.value)
+      const state = states(event.target.value, STORAGE.actualShow)
       await selectedLib(state)
     } else if(event.target.value == "Due date") {
       STORAGE.setSort("Due date")
+      STORAGE.actualShow
       // await STORAGE.sortTasksDueDate().then(dat => {
       //   DOMHandler.reload()
       // })
-      const state = states(event.target.value)
+      const state = states(event.target.value, STORAGE.actualShow)
       await selectedLib(state)
     } else if(event.target.value == "Importance") {
       console.log("imp");
       STORAGE.setSort("Importance")
+      STORAGE.actualShow
       // await STORAGE.sortTasksImportant().then(dat => {
       //   DOMHandler.reload()
       // })
-      const state = states(event.target.value)
+      const state = states(event.target.value, STORAGE.actualShow)
       await selectedLib(state)
     } else {
       return
