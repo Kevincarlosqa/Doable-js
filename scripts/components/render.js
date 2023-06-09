@@ -40,21 +40,89 @@ function renderNewTask() {
 function renderShow() {
   const actualSelectedShow = STORAGE.actualShow
   console.log(actualSelectedShow);
-  return `
-    <div class="flex justify-between task_show">
-      <p>Show</p>
-      <div>
-        <label for="pending" >
-          <input type="checkbox" id="pending" name="pendingShow">
-          Only Pending
-        </label>
-        <label for="important" >
-          <input type="checkbox" id="important" name="importantShow"  >
-          Only important
-        </label>
-      </div>
-    </div>
-  `
+  switch (actualSelectedShow) {
+    case 0:
+      return `
+        <div class="flex justify-between task_show">
+          <p>Show</p>
+          <div>
+            <label for="pending" >
+              <input type="checkbox" id="pending" name="pendingShow">
+              Only Pending
+            </label>
+            <label for="important" >
+              <input type="checkbox" id="important" name="importantShow"  >
+              Only important
+            </label>
+          </div>
+        </div>
+      `
+    case 1:
+      return `
+        <div class="flex justify-between task_show">
+          <p>Show</p>
+          <div>
+            <label for="pending" >
+              <input type="checkbox" id="pending" name="pendingShow" checked>
+              Only Pending
+            </label>
+            <label for="important" >
+              <input type="checkbox" id="important" name="importantShow"  >
+              Only important
+            </label>
+          </div>
+        </div>
+      `
+    case 2:
+      return `
+        <div class="flex justify-between task_show">
+          <p>Show</p>
+          <div>
+            <label for="pending" >
+              <input type="checkbox" id="pending" name="pendingShow">
+              Only Pending
+            </label>
+            <label for="important" >
+              <input type="checkbox" id="important" name="importantShow" checked>
+              Only important
+            </label>
+          </div>
+        </div>
+      `
+    case 3:
+      return `
+        <div class="flex justify-between task_show">
+          <p>Show</p>
+          <div>
+            <label for="pending" >
+              <input type="checkbox" id="pending" name="pendingShow" checked>
+              Only Pending
+            </label>
+            <label for="important" >
+              <input type="checkbox" id="important" name="importantShow" checked>
+              Only important
+            </label>
+          </div>
+        </div>
+      `
+    default:
+      break;
+  }
+  // return `
+  //   <div class="flex justify-between task_show">
+  //     <p>Show</p>
+  //     <div>
+  //       <label for="pending" >
+  //         <input type="checkbox" id="pending" name="pendingShow">
+  //         Only Pending
+  //       </label>
+  //       <label for="important" >
+  //         <input type="checkbox" id="important" name="importantShow"  >
+  //         Only important
+  //       </label>
+  //     </div>
+  //   </div>
+  // `
 }
 
 {/* <label for="pet-select">Choose a pet:</label>
