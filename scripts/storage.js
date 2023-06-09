@@ -18,9 +18,14 @@ async function importantStorage() {
   this.tasks = tasks.filter((important) => important.important == true)
 }
 
-async function sortTasksAlphabetical() {
-  const tasks = await taskList()
-  this.tasks = tasksAlphabetical(tasks)
+async function sortTasksAlphabetical(data = null) {
+  if(!data) {
+    const tasks = await taskList()
+    this.tasks = tasksAlphabetical(tasks)
+  } else if (data) {
+    console.log(data);
+    this.tasks = tasksAlphabetical(data)
+  }
 }
 
 async function sortTasksDueDate() {

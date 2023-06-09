@@ -45,9 +45,11 @@ function listenAddTask() {
       const dateFormated = dateStructure(newDate.value)
       const taskCreated = await createTask({title: newTasks.value, due_date: dateFormated})
       console.log(taskCreated);
-      await STORAGE.fetchTasks().then(data => {
-        DOMHandler.reload()})
-      
+      // await STORAGE.fetchTasks().then(data => {
+      //   DOMHandler.reload()})
+      const state = states(STORAGE.actualSort, STORAGE.actualShow)
+      console.log(state);
+      await selectedLib(state)
     } catch (error) {
       DOMHandler.reload()
       console.log(error);
@@ -64,7 +66,11 @@ function listenShowPending(){
     console.log("Pending");
     STORAGE.pending? STORAGE.pending = false : STORAGE.pending = true
     STORAGE.setShow()
+    console.log(STORAGE.actualSort);
     console.log(STORAGE.actualShow);
+    const state = states(STORAGE.actualSort, STORAGE.actualShow)
+    console.log(state);
+    await selectedLib(state)
     // await STORAGE.pendingStorage().then(data => {
     //   STORAGE.actualShow = "pending"
     //   DOMHandler.reload()})
@@ -78,7 +84,11 @@ function listenShowImportant(){
     console.log("Important");
     STORAGE.important? STORAGE.important = false : STORAGE.important = true
     STORAGE.setShow()
+    console.log(STORAGE.actualSort);
     console.log(STORAGE.actualShow);
+    const state = states(STORAGE.actualSort, STORAGE.actualShow)
+    console.log(state);
+    await selectedLib(state)
     // await STORAGE.importantStorage().then(data => {
     //   STORAGE.actualShow = "important"
     //   DOMHandler.reload()})
@@ -114,14 +124,14 @@ function listenSelectSort() {
   const sort = document.querySelector("#js-sort")
   sort.addEventListener("change", async (event) => {
     if(event.target.value == "Alphabetical (a-z)"){
-      // STORAGE.setSort("Alphabetical (a-z)")
+      STORAGE.setSort("Alphabetical (a-z)")
       // await STORAGE.sortTasksAlphabetical().then(dat => {
       //   DOMHandler.reload()
       // })
       const state = states(event.target.value)
       await selectedLib(state)
     } else if(event.target.value == "Due date") {
-      // STORAGE.setSort("Due date")
+      STORAGE.setSort("Due date")
       // await STORAGE.sortTasksDueDate().then(dat => {
       //   DOMHandler.reload()
       // })
@@ -129,7 +139,7 @@ function listenSelectSort() {
       await selectedLib(state)
     } else if(event.target.value == "Importance") {
       console.log("imp");
-      // STORAGE.setSort("Importance")
+      STORAGE.setSort("Importance")
       // await STORAGE.sortTasksImportant().then(dat => {
       //   DOMHandler.reload()
       // })
