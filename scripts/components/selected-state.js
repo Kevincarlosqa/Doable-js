@@ -49,7 +49,10 @@ async function selectedLib(state){
        
       break;
     case 4:
-      
+      STORAGE.setSort("Due date")
+      await STORAGE.sortTasksDueDate().then(dat => {
+        STORAGE.pendingStorage(STORAGE.tasks)
+        DOMHandler.reload()})
       break;
     case 5:
       
@@ -62,7 +65,10 @@ async function selectedLib(state){
         })
       break;
     case 7:
-      
+      STORAGE.setSort("Due date")
+      await STORAGE.sortTasksDueDate().then(dat => {
+        STORAGE.importantStorage(STORAGE.tasks)
+        DOMHandler.reload()})
       break;
     case 8:
       

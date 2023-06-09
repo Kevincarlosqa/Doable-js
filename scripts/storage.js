@@ -8,14 +8,22 @@ async function fetchTasks() {
   // this == STORE
 }
 
-async function pendingStorage() {
-  const tasks = await taskList()
-  this.tasks = tasks.filter((pending) => pending.completed == false)
+async function pendingStorage(data = null) {
+  if (!data) {
+    const tasks = await taskList()
+    this.tasks = tasks.filter((pending) => pending.completed == false)
+  } else if (data) {
+    this.tasks = data.filter((pending) => pending.completed == false)
+  }
 }
 
-async function importantStorage() {
-  const tasks = await taskList()
-  this.tasks = tasks.filter((important) => important.important == true)
+async function importantStorage(data = null) {
+  if(!data) {
+    const tasks = await taskList()
+    this.tasks = tasks.filter((important) => important.important == true)
+  } else if(data) {
+    this.tasks = data.filter((important) => important.important == true)
+  }
 }
 
 async function sortTasksAlphabetical(data = null) {
@@ -28,9 +36,14 @@ async function sortTasksAlphabetical(data = null) {
   }
 }
 
-async function sortTasksDueDate() {
-  const tasks = await taskList()
-  this.tasks = tasksDueDate(tasks)
+async function sortTasksDueDate(data = null) {
+  if (!data) {
+    const tasks = await taskList()
+    this.tasks = tasksDueDate(tasks)
+  } else if (data) {
+    console.log(data);
+    this.tasks = tasksAlphabetical(data)
+  }
 }
 
 async function sortTasksImportant() {
