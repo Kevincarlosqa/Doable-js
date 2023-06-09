@@ -38,10 +38,8 @@ const STORAGE = {
   tasks: [],
   actualSort: "Alphabetical (a-z)",
   actualShow: 0,
-  // selectedState: 0,
-  // onlyPending: [],
-  // onlyImportant: [],
-  // contactId: null,
+  pending: false,
+  important: false,
   fetchTasks,
   pendingStorage,
   importantStorage,
@@ -51,12 +49,19 @@ const STORAGE = {
   setSort(sort) {
     this.actualSort = sort
   },
-  setShow(show) {
-    this.actualShow = show
+  setShow() {
+    if(this.pending == false && this.important == false) {
+      this.actualShow = 0
+    } else if(this.pending == true && this.important == false) {
+      this.actualShow = 1
+    } else if(this.pending == false && this.important == true) {
+      this.actualShow = 2
+    } else if(this.pending == true && this.important == true) {
+      this.actualShow = 3
+    } else{
+      return
+    }
   },
-  // setSelectedState(state) {
-  //   this.selectedState = state
-  // }
 }
 
 export default STORAGE

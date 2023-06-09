@@ -1,6 +1,12 @@
 import STORAGE from "../storage.js"
 import DOMHandler from "../dom-handler.js"
 
+function showState() {
+  const pending = document.getElementById("pending")
+  const important = document.getElementById("important")
+  console.log(pending.checked);
+  console.log(important.checked);
+}
 
 function states(sort, show = 0) {
   if(sort == "Alphabetical (a-z)" && show == 0) return 0
@@ -63,4 +69,4 @@ async function selectedLib(state){
   }
 }
 
-export { selectedLib, states }
+export { selectedLib, states, showState }

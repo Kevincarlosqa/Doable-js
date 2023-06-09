@@ -36,7 +36,7 @@ function renderNewTask() {
     </section>
   </main>`
 }
-
+// ${actualSelectedShow == "pending"? `checked` : ""}
 function renderShow() {
   const actualSelectedShow = STORAGE.actualShow
   console.log(actualSelectedShow);
@@ -45,11 +45,11 @@ function renderShow() {
       <p>Show</p>
       <div>
         <label for="pending" >
-          <input type="checkbox" id="pending" name="pendingShow" ${actualSelectedShow == "pending"? `checked` : ""}>
+          <input type="checkbox" id="pending" name="pendingShow">
           Only Pending
         </label>
         <label for="important" >
-          <input type="checkbox" id="important" name="importantShow" ${actualSelectedShow == "important"? `checked` : ""} >
+          <input type="checkbox" id="important" name="importantShow"  >
           Only important
         </label>
       </div>

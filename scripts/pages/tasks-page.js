@@ -8,7 +8,7 @@ import { dateStructure } from "../components/utils.js"
 import { input } from "../components/input.js"
 import { createTask, editTask } from "../services/task-service.js"
 import STORAGE from "../storage.js"
-import { selectedLib, states } from "../components/selected-state.js"
+import { selectedLib, states, showState } from "../components/selected-state.js"
 import { tasksAlphabetical, tasksDueDate, tasksImportance } from "../components/utils.js"
 
 function render() {
@@ -59,21 +59,29 @@ function listenAddTask() {
 
 function listenShowPending(){
   const pending = document.getElementById("pending")
+  showState()
   pending.addEventListener("change", async (event) => {
     console.log("Pending");
-    await STORAGE.pendingStorage().then(data => {
-      STORAGE.actualShow = "pending"
-      DOMHandler.reload()})
+    STORAGE.pending? STORAGE.pending = false : STORAGE.pending = true
+    STORAGE.setShow()
+    console.log(STORAGE.actualShow);
+    // await STORAGE.pendingStorage().then(data => {
+    //   STORAGE.actualShow = "pending"
+    //   DOMHandler.reload()})
   })
 }
 
 function listenShowImportant(){
   const important = document.getElementById("important")
+  showState()
   important.addEventListener("change", async (event) => {
     console.log("Important");
-    await STORAGE.importantStorage().then(data => {
-      STORAGE.actualShow = "important"
-      DOMHandler.reload()})
+    STORAGE.important? STORAGE.important = false : STORAGE.important = true
+    STORAGE.setShow()
+    console.log(STORAGE.actualShow);
+    // await STORAGE.importantStorage().then(data => {
+    //   STORAGE.actualShow = "important"
+    //   DOMHandler.reload()})
   })
 }
 
