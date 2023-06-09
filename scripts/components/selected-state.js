@@ -55,7 +55,10 @@ async function selectedLib(state){
         DOMHandler.reload()})
       break;
     case 5:
-      
+      STORAGE.setSort("Importance")
+      await STORAGE.sortTasksImportant().then(dat => {
+        STORAGE.pendingStorage(STORAGE.tasks)
+        DOMHandler.reload()})
       break;
     case 6:
       await STORAGE.importantStorage().then(data => {
@@ -71,7 +74,10 @@ async function selectedLib(state){
         DOMHandler.reload()})
       break;
     case 8:
-      
+      STORAGE.setSort("Importance")
+      await STORAGE.sortTasksImportant().then(dat => {
+        STORAGE.importantStorage(STORAGE.tasks)
+        DOMHandler.reload()})
       break;
     case 9:
       
