@@ -8,6 +8,7 @@ import { dateStructure } from "../components/utils.js"
 import { input } from "../components/input.js"
 import { createTask, editTask } from "../services/task-service.js"
 import STORAGE from "../storage.js"
+import { selectedLib, states } from "../components/selected-state.js"
 import { tasksAlphabetical, tasksDueDate, tasksImportance } from "../components/utils.js"
 
 function render() {
@@ -61,6 +62,7 @@ function listenShowPending(){
   pending.addEventListener("change", async (event) => {
     console.log("Pending");
     await STORAGE.pendingStorage().then(data => {
+      STORAGE.actualShow = "pending"
       DOMHandler.reload()})
   })
 }
@@ -70,6 +72,7 @@ function listenShowImportant(){
   important.addEventListener("change", async (event) => {
     console.log("Important");
     await STORAGE.importantStorage().then(data => {
+      STORAGE.actualShow = "important"
       DOMHandler.reload()})
   })
 }
@@ -103,23 +106,27 @@ function listenSelectSort() {
   const sort = document.querySelector("#js-sort")
   sort.addEventListener("change", async (event) => {
     if(event.target.value == "Alphabetical (a-z)"){
-      console.log("alpha");
-      STORAGE.setSort("Alphabetical (a-z)")
-      await STORAGE.sortTasksAlphabetical().then(dat => {
-        DOMHandler.reload()
-      })
+      // STORAGE.setSort("Alphabetical (a-z)")
+      // await STORAGE.sortTasksAlphabetical().then(dat => {
+      //   DOMHandler.reload()
+      // })
+      const state = states(event.target.value)
+      await selectedLib(state)
     } else if(event.target.value == "Due date") {
-      console.log("due");
-      STORAGE.setSort("Due date")
-      await STORAGE.sortTasksDueDate().then(dat => {
-        DOMHandler.reload()
-      })
+      // STORAGE.setSort("Due date")
+      // await STORAGE.sortTasksDueDate().then(dat => {
+      //   DOMHandler.reload()
+      // })
+      const state = states(event.target.value)
+      await selectedLib(state)
     } else if(event.target.value == "Importance") {
       console.log("imp");
-      STORAGE.setSort("Importance")
-      await STORAGE.sortTasksImportant().then(dat => {
-        DOMHandler.reload()
-      })
+      // STORAGE.setSort("Importance")
+      // await STORAGE.sortTasksImportant().then(dat => {
+      //   DOMHandler.reload()
+      // })
+      const state = states(event.target.value)
+      await selectedLib(state)
     } else {
       return
     }

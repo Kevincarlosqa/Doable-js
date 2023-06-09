@@ -37,7 +37,8 @@ const STORAGE = {
   user: null,
   tasks: [],
   actualSort: "Alphabetical (a-z)",
-  actualShow: "",
+  actualShow: 0,
+  // selectedState: 0,
   // onlyPending: [],
   // onlyImportant: [],
   // contactId: null,
@@ -49,7 +50,13 @@ const STORAGE = {
   sortTasksImportant,
   setSort(sort) {
     this.actualSort = sort
-  }
+  },
+  setShow(show) {
+    this.actualShow = show
+  },
+  // setSelectedState(state) {
+  //   this.selectedState = state
+  // }
 }
 
 export default STORAGE

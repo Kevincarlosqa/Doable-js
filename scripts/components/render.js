@@ -38,16 +38,18 @@ function renderNewTask() {
 }
 
 function renderShow() {
+  const actualSelectedShow = STORAGE.actualShow
+  console.log(actualSelectedShow);
   return `
     <div class="flex justify-between task_show">
       <p>Show</p>
       <div>
         <label for="pending" >
-          <input type="checkbox" id="pending" name="pendingShow" >
+          <input type="checkbox" id="pending" name="pendingShow" ${actualSelectedShow == "pending"? `checked` : ""}>
           Only Pending
         </label>
         <label for="important" >
-          <input type="checkbox" id="important" name="importantShow" >
+          <input type="checkbox" id="important" name="importantShow" ${actualSelectedShow == "important"? `checked` : ""} >
           Only important
         </label>
       </div>
