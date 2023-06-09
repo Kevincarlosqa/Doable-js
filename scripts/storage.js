@@ -2,8 +2,10 @@ import { taskList } from "./services/task-service.js"
 import { tasksAlphabetical, tasksDueDate, tasksImportance } from "./components/utils.js"
 
 async function fetchTasks() {
-  const tasks = await taskList()
-  this.tasks = tasks
+    const tasks = await taskList()
+    this.tasks = tasks
+
+
   // this.onlyPending = tasks.filter((pending) => pending.completed == false)
   // this == STORE
 }

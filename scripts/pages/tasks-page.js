@@ -61,7 +61,7 @@ function listenAddTask() {
 
 function listenShowPending(){
   const pending = document.getElementById("pending")
-  showState()
+  // showState()
   pending.addEventListener("change", async (event) => {
     console.log("Pending");
     STORAGE.pending? STORAGE.pending = false : STORAGE.pending = true
@@ -155,6 +155,7 @@ function listenSelectSort() {
 }
 
 function tasksPage() {
+
   return {
     toString(){
       return render.call(this)

@@ -24,6 +24,8 @@ function renderTasks(task) {
 }
 
 function render() {
+  // STORAGE.actualSort = localStorage.getItem("Actual Sort")
+  // STORAGE.actualShow = localStorage.getItem("Actual Show")
   const sort = STORAGE.actualSort
   const show = STORAGE.actualShow
   console.log(sort);
@@ -32,6 +34,7 @@ function render() {
   console.log(actualState);
   // selectedLib(actualState)
   const tasks = STORAGE.tasks
+  // localStorage.setItem("Tasks", JSON.stringify(tasks))
   console.log(tasks);
   return `
     <div class="js-tasks-list">
