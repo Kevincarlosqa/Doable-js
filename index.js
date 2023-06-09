@@ -34,7 +34,7 @@ async function init() {
 		if(!token) throw new Error
 		// console.log(STORE.user);
 		await STORAGE.fetchTasks()
-    tasksDueDate(STORAGE.tasks)
+    tasksAlphabetical(STORAGE.tasks)
 		DOMHandler.load(tasksPage(), root)
 	} catch (error) {
 		sessionStorage.removeItem(tokenKey)

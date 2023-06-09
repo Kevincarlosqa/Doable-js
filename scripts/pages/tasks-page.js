@@ -8,6 +8,7 @@ import { dateStructure } from "../components/utils.js"
 import { input } from "../components/input.js"
 import { createTask, editTask } from "../services/task-service.js"
 import STORAGE from "../storage.js"
+import { tasksAlphabetical, tasksDueDate, tasksImportance } from "../components/utils.js"
 
 function render() {
   const logout = "logout"
@@ -53,6 +54,8 @@ function listenAddTask() {
   })
 }
 
+// Opciones del Show
+
 function listenShowPending(){
   const pending = document.getElementById("pending")
   pending.addEventListener("change", async (event) => {
@@ -71,6 +74,7 @@ function listenShowImportant(){
   })
 }
 
+// Funciones de los Tasks
 function listenCheckTask() {
   const checkTask = document.querySelector(".js-tasks-list")
   checkTask.addEventListener("change", async (event) => {
@@ -95,6 +99,32 @@ function listenImportantTask() {
   })
 }
 
+function listenSelectSort() {
+  const sort = document.querySelector("#js-sort")
+  sort.addEventListener("change", async (event) => {
+    if(event.target.value == "Alphabetical (a-z)"){
+      console.log("alpha");
+      // const task = tasksAlphabetical(STORAGE.tasks)
+      await STORAGE.sortTasksAlphabetical().then(dat => {
+        DOMHandler.reload()
+      })
+    } else if(event.target.value == "Due date") {
+      console.log("due");
+      // const task = tasksDueDate(STORAGE.tasks)
+      await STORAGE.sortTasksDueDate().then(dat => {
+        DOMHandler.reload()
+      })
+    } else if(event.target.value == "Importance") {
+      console.log("imp");
+      await STORAGE.sortTasksImportant().then(dat => {
+        DOMHandler.reload()
+      })
+    } else {
+      return
+    }
+  })
+}
+
 function tasksPage() {
   return {
     toString(){
@@ -107,6 +137,7 @@ function tasksPage() {
       listenShowImportant()
       listenCheckTask()
       listenImportantTask()
+      listenSelectSort()
     }
   }
 

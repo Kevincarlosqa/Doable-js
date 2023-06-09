@@ -24,7 +24,7 @@ function renderTasks(task) {
 
 function render() {
 
-  const tasks = tasksImportance(STORAGE.tasks) 
+  const tasks = STORAGE.tasks
   return `
     <div class="js-tasks-list">
       ${tasks.map(task => renderTasks(task)).join("")}
