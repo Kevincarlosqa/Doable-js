@@ -8,25 +8,10 @@ import { login, logout, signUp } from "./scripts/services/session-service.js";
 import { taskList, showTask, createTask, deleteTask, editTask } from "./scripts/services/task-service.js";
 import { states } from "./scripts/components/selected-state.js";
 
-
-// let load
-// DOMHandler.load(loginPage(), root)
-
 const credentials = {
 	email: "kevincarlosqa@mail.com",
 	password: "123456"
 }
-
-// await login(credentials)
-// let edit2Task = {
-// 	title: "edit Study English",
-// 	due_date: "2023-06-09",
-//   completed: true,
-//   important: true,
-// }
-// await editTask(edit2Task, 289).then(data => console.log(data))
-
-// logout()
 
 async function init() {
 	//  logica de Inicio

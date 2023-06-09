@@ -1,0 +1,19 @@
+{
+  "name": "doable-js-kevincarlosqa",
+  "version": "1.0.0",
+  "description": "Doable is an application that allows users to manage and organize their tasks efficiently.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeableorg/doable-js-Kevincarlosqa.git"
+  },
+  "author": "Kevincarlosqa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codeableorg/doable-js-Kevincarlosqa/issues"
+  },
+  "homepage": "https://github.com/codeableorg/doable-js-Kevincarlosqa#readme"
+}

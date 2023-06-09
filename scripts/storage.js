@@ -4,10 +4,6 @@ import { tasksAlphabetical, tasksDueDate, tasksImportance } from "./components/u
 async function fetchTasks() {
     const tasks = await taskList()
     this.tasks = tasks
-
-
-  // this.onlyPending = tasks.filter((pending) => pending.completed == false)
-  // this == STORE
 }
 
 async function pendingStorage(data = null) {

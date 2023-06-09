@@ -32,7 +32,6 @@ async function logout() {
   
   try {
     data = await response.json()
-    // console.log(data);
   } catch (error) {
     data = response.statusText
   }
@@ -59,7 +58,6 @@ async function signUp(credentials = { email, password}) {
     throw new Error(data.errors)
   }
   const data = await response.json();
-  console.log(data);
   sessionStorage.setItem(tokenKey, data.token)
   return data
 }

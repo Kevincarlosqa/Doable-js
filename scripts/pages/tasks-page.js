@@ -44,11 +44,7 @@ function listenAddTask() {
       const { newTasks, newDate} = event.target.elements
       const dateFormated = dateStructure(newDate.value)
       const taskCreated = await createTask({title: newTasks.value, due_date: dateFormated})
-      console.log(taskCreated);
-      // await STORAGE.fetchTasks().then(data => {
-      //   DOMHandler.reload()})
       const state = states(STORAGE.actualSort, STORAGE.actualShow)
-      console.log(state);
       await selectedLib(state)
     } catch (error) {
       DOMHandler.reload()
@@ -71,9 +67,6 @@ function listenShowPending(){
     const state = states(STORAGE.actualSort, STORAGE.actualShow)
     console.log(state);
     await selectedLib(state)
-    // await STORAGE.pendingStorage().then(data => {
-    //   STORAGE.actualShow = "pending"
-    //   DOMHandler.reload()})
   })
 }
 
@@ -89,9 +82,6 @@ function listenShowImportant(){
     const state = states(STORAGE.actualSort, STORAGE.actualShow)
     console.log(state);
     await selectedLib(state)
-    // await STORAGE.importantStorage().then(data => {
-    //   STORAGE.actualShow = "important"
-    //   DOMHandler.reload()})
   })
 }
 
@@ -126,26 +116,17 @@ function listenSelectSort() {
     if(event.target.value == "Alphabetical (a-z)"){
       STORAGE.setSort("Alphabetical (a-z)")
       STORAGE.actualShow
-      // await STORAGE.sortTasksAlphabetical().then(dat => {
-      //   DOMHandler.reload()
-      // })
       const state = states(event.target.value, STORAGE.actualShow)
       await selectedLib(state)
     } else if(event.target.value == "Due date") {
       STORAGE.setSort("Due date")
       STORAGE.actualShow
-      // await STORAGE.sortTasksDueDate().then(dat => {
-      //   DOMHandler.reload()
-      // })
       const state = states(event.target.value, STORAGE.actualShow)
       await selectedLib(state)
     } else if(event.target.value == "Importance") {
       console.log("imp");
       STORAGE.setSort("Importance")
       STORAGE.actualShow
-      // await STORAGE.sortTasksImportant().then(dat => {
-      //   DOMHandler.reload()
-      // })
       const state = states(event.target.value, STORAGE.actualShow)
       await selectedLib(state)
     } else {

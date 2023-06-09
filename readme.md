@@ -57,7 +57,7 @@ git push origin my-branch
 6. Open a Pull Request in the original repository.
 
 ## Team
-- Kevincarlosqa: [GitHub](https://github.com/Kevincarlosqa)
+- kevincarlosqa: [GitHub](https://github.com/Kevincarlosqa)
 
 ## License
 
