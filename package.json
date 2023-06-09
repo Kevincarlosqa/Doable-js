@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/codeableorg/doable-js-Kevincarlosqa/issues"
   },
-  "homepage": "https://github.com/codeableorg/doable-js-Kevincarlosqa#readme"
+  "homepage": "https://github.com/codeableorg/doable-js-Kevincarlosqa#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
 }
