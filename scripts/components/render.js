@@ -1,4 +1,5 @@
 import { input } from "./input.js"
+import STORAGE from "../storage.js"
 
 function renderHeader(logout) {
   return `
@@ -67,14 +68,15 @@ function renderShow() {
 </select> */}
 
 function renderSort() {
+  const actualSelectedSort = STORAGE.actualSort
   return `
     <div class="flex justify-between task_show">
       <label for="js-sort">Sort</label>
 
       <select id="js-sort" class="select-sort__input">
-          <option value="Alphabetical (a-z)">Alphabetical (a-z)</option>
-          <option value="Due date">Due date</option>
-          <option value="Importance">Importance</option>
+          <option ${actualSelectedSort == "Alphabetical (a-z)"? `selected`: ""} value="Alphabetical (a-z)">Alphabetical (a-z)</option>
+          <option ${actualSelectedSort == "Due date"? `selected`: ""} value="Due date">Due date</option>
+          <option ${actualSelectedSort == "Importance"? `selected`: ""} value="Importance">Importance</option>
       </select>
     </div>
   `

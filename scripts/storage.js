@@ -36,6 +36,8 @@ async function sortTasksImportant() {
 const STORAGE = {
   user: null,
   tasks: [],
+  actualSort: "Alphabetical (a-z)",
+  actualShow: "",
   // onlyPending: [],
   // onlyImportant: [],
   // contactId: null,
@@ -44,7 +46,10 @@ const STORAGE = {
   importantStorage,
   sortTasksAlphabetical,
   sortTasksDueDate,
-  sortTasksImportant
+  sortTasksImportant,
+  setSort(sort) {
+    this.actualSort = sort
+  }
 }
 
 export default STORAGE

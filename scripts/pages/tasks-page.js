@@ -104,18 +104,19 @@ function listenSelectSort() {
   sort.addEventListener("change", async (event) => {
     if(event.target.value == "Alphabetical (a-z)"){
       console.log("alpha");
-      // const task = tasksAlphabetical(STORAGE.tasks)
+      STORAGE.setSort("Alphabetical (a-z)")
       await STORAGE.sortTasksAlphabetical().then(dat => {
         DOMHandler.reload()
       })
     } else if(event.target.value == "Due date") {
       console.log("due");
-      // const task = tasksDueDate(STORAGE.tasks)
+      STORAGE.setSort("Due date")
       await STORAGE.sortTasksDueDate().then(dat => {
         DOMHandler.reload()
       })
     } else if(event.target.value == "Importance") {
       console.log("imp");
+      STORAGE.setSort("Importance")
       await STORAGE.sortTasksImportant().then(dat => {
         DOMHandler.reload()
       })
