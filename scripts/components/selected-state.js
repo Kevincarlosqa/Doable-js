@@ -56,7 +56,10 @@ async function selectedLib(state){
       break;
     case 6:
       await STORAGE.importantStorage().then(data => {
-      DOMHandler.reload()})
+        console.log(STORAGE.tasks);
+        STORAGE.sortTasksAlphabetical(STORAGE.tasks)
+          DOMHandler.reload()
+        })
       break;
     case 7:
       
