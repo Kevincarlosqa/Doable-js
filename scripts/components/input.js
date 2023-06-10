@@ -5,10 +5,10 @@ export function input({label,
                        type, 
                        required = false, 
                        value = false}) {
-                        
+
   return `
     <div class="input">
-      ${label? `<label for="${id}" class="content-xs overline">${label}</label>` : ""}
+      ${label? `<label for="${id}" class="content-xs  sort-show">${label}</label>` : ""}
 
         <div class="input__container">
           <input

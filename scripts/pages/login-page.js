@@ -13,7 +13,7 @@ function render() {
   ${renderHeader()}
   <main class="section">
     <section class="container">
-      <form class="flex flex-column gap-4 mb-4 js-login-form">
+      <form class="flex flex-column gap-4 mb-4 js-login-form ">
 
         ${input({
           label: "email",
