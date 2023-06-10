@@ -177,7 +177,7 @@
   animation: tick 250ms ease-in forwards;
   background-color: var(--primary-300);
   border: 1px solid var(--primary-300);
-  background-image: url("assets/icons/check.svg");
+  background-image: url("../../imgs/Icon.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

@@ -6,17 +6,19 @@ import { tasksAlphabetical, tasksDueDate, tasksImportance } from "./utils.js";
 
 function renderTasks(task) {
   return `
-    <div class="flex justify-between js-checkTask task" >
-      <label for="${task.id}" >
-          <input type="checkbox" id="${task.name}" data-id=${task.id} name="${task.id}" ${task.completed? `checked`:""} >
+    <div class="flex justify-between js-checkTask task container  " >
+    <div>
+      <label for="${task.id}" class="task_label ${task.completed? `task_completed`:``}">
+          <input type="checkbox" class="checkbox__input  " id="${task.name}" data-id=${task.id} name="${task.id}" ${task.completed? `checked`:""} >
           ${task.title}
-          ${task.due_date? 
-            `<p class="task__date" for="${task.name}">${dateFormat(task.due_date)}</p>` : "" }
           
-      </label>
+          </label>
+          ${task.due_date? 
+            `<p class="task__date ${task.completed? `task__date_completed`:``}" for="${task.name}">${dateFormat(task.due_date)}</p>` : "" }
+            </div>
       <div class="js-important-logo" data-logo=${task.id}>
         ${task.important? 
-          `<img class="logo-task" src="../imgs/important.png">`:`<img class="logo-task" src="../imgs/notImportant.png">`
+          (task.completed? `<img class="logo-task" src="../imgs/importantCompleted.png">` : `<img class="logo-task" src="../imgs/important.png">`) :`<img class="logo-task" src="../imgs/notImportant.png">`
         }
       </div>
     </div>
@@ -37,7 +39,7 @@ function render() {
   // localStorage.setItem("Tasks", JSON.stringify(tasks))
   console.log(tasks);
   return `
-    <div class="js-tasks-list">
+    <div class="js-tasks-list ">
       ${tasks.map(task => renderTasks(task)).join("")}
     </div>
   `

@@ -14,11 +14,13 @@ import { tasksAlphabetical, tasksDueDate, tasksImportance } from "../components/
 function render() {
   const logout = "logout"
   return `
-  ${renderHeader(logout)}
-    ${renderSort()}
-    ${renderShow()}
-    ${tasks}
-    ${renderNewTask()}
+   ${renderHeader(logout)}
+    <div class="tasks-section">
+      ${renderSort()}
+      ${renderShow()}
+      ${tasks}
+      ${renderNewTask()}
+    </div>
   `
 }
 

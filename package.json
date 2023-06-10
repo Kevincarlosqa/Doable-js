@@ -4,7 +4,7 @@
   "description": "Doable is an application that allows users to manage and organize their tasks efficiently.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,11 @@
     "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
+    "@testing-library/dom": "^9.3.0",
+    "babel-jest": "^29.5.0",
+    "esm": "^3.2.25",
     "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0"
+    "jest-environment-jsdom": "^29.5.0",
+    "node-fetch": "^3.3.1"
   }
 }

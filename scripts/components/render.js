@@ -14,7 +14,7 @@ function renderHeader(logout) {
 
 function renderNewTask() {
   return `
-  <main class="section">
+  <main class="new_task__section">
     <section class="container">
       <form class="flex flex-column gap-1 mb-4 js-newTask-form">
 
@@ -43,7 +43,7 @@ function renderShow() {
   switch (actualSelectedShow) {
     case 0:
       return `
-        <div class="flex justify-between task_show">
+        <div class="flex justify-between task_show container">
           <p>Show</p>
           <div>
             <label for="pending" >
@@ -59,7 +59,7 @@ function renderShow() {
       `
     case 1:
       return `
-        <div class="flex justify-between task_show">
+        <div class="flex justify-between task_show container">
           <p>Show</p>
           <div>
             <label for="pending" >
@@ -75,7 +75,7 @@ function renderShow() {
       `
     case 2:
       return `
-        <div class="flex justify-between task_show">
+        <div class="flex justify-between task_show container">
           <p>Show</p>
           <div>
             <label for="pending" >
@@ -91,7 +91,7 @@ function renderShow() {
       `
     case 3:
       return `
-        <div class="flex justify-between task_show">
+        <div class="flex justify-between task_show container">
           <p>Show</p>
           <div>
             <label for="pending" >
@@ -128,7 +128,7 @@ function renderShow() {
 function renderSort() {
   const actualSelectedSort = STORAGE.actualSort
   return `
-    <div class="flex justify-between task_show">
+    <div class="flex justify-between task_show container">
       <label for="js-sort">Sort</label>
 
       <select id="js-sort" class="select-sort__input">
