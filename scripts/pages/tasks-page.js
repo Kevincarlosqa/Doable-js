@@ -97,7 +97,9 @@ function listenCheckTask() {
     let task = STORAGE.tasks.find(task => task.id === +check.dataset.id)
     console.log(task);
     task.completed? task.completed = false : task.completed = true
-    await editTask({...task},task.id).then(data => DOMHandler.reload())
+    const state = states(STORAGE.actualSort, STORAGE.actualShow)
+    await editTask({...task},task.id).then(data => 
+    selectedLib(state))
   })
 }
 
@@ -108,7 +110,8 @@ function listenImportantTask() {
     if(!logoTask) return
     let task = STORAGE.tasks.find(task => task.id === +logoTask.dataset.logo)
     task.important? task.important = false : task.important = true
-    await editTask({...task},task.id).then(data => DOMHandler.reload())
+    const state = states(STORAGE.actualSort, STORAGE.actualShow)
+    await editTask({...task},task.id).then(data => selectedLib(state))
   })
 }
 
