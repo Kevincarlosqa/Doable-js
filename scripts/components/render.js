@@ -44,14 +44,14 @@ function renderShow() {
     case 0:
       return `
         <div class="flex justify-between task_show container">
-          <p>Show</p>
-          <div>
-            <label for="pending" >
-              <input type="checkbox" id="pending" name="pendingShow">
+          <p class="sort-show">Show</p>
+          <div class="show-div">
+            <label for="pending" class="show_label" >
+              <input type="checkbox" class="checkbox__input" id="pending" name="pendingShow">
               Only Pending
             </label>
-            <label for="important" >
-              <input type="checkbox" id="important" name="importantShow"  >
+            <label for="important" class="show_label">
+              <input type="checkbox" class="checkbox__input" id="important" name="importantShow"  >
               Only important
             </label>
           </div>
@@ -60,14 +60,14 @@ function renderShow() {
     case 1:
       return `
         <div class="flex justify-between task_show container">
-          <p>Show</p>
-          <div>
-            <label for="pending" >
-              <input type="checkbox" id="pending" name="pendingShow" checked>
+          <p class="sort-show">Show</p>
+          <div class="show-div">
+            <label for="pending" class="show_label" >
+              <input type="checkbox" class="checkbox__input" id="pending" name="pendingShow" checked>
               Only Pending
             </label>
-            <label for="important" >
-              <input type="checkbox" id="important" name="importantShow"  >
+            <label for="important" class="show_label">
+              <input type="checkbox" class="checkbox__input" id="important" name="importantShow"  >
               Only important
             </label>
           </div>
@@ -76,14 +76,14 @@ function renderShow() {
     case 2:
       return `
         <div class="flex justify-between task_show container">
-          <p>Show</p>
-          <div>
-            <label for="pending" >
-              <input type="checkbox" id="pending" name="pendingShow">
+          <p class="sort-show">Show</p>
+          <div class="show-div">
+            <label for="pending" class="show_label">
+              <input type="checkbox" class="checkbox__input" id="pending" name="pendingShow">
               Only Pending
             </label>
-            <label for="important" >
-              <input type="checkbox" id="important" name="importantShow" checked>
+            <label for="important" class="show_label">
+              <input type="checkbox" class="checkbox__input" id="important" name="importantShow" checked>
               Only important
             </label>
           </div>
@@ -92,14 +92,14 @@ function renderShow() {
     case 3:
       return `
         <div class="flex justify-between task_show container">
-          <p>Show</p>
-          <div>
-            <label for="pending" >
-              <input type="checkbox" id="pending" name="pendingShow" checked>
+          <p class="sort-show">Show</p>
+          <div class="show-div">
+            <label for="pending" class="show_label">
+              <input type="checkbox" class="checkbox__input" id="pending" name="pendingShow" checked>
               Only Pending
             </label>
-            <label for="important" >
-              <input type="checkbox" id="important" name="importantShow" checked>
+            <label for="important" class="show_label">
+              <input type="checkbox" class="checkbox__input" id="important" name="importantShow" checked>
               Only important
             </label>
           </div>
@@ -129,7 +129,7 @@ function renderSort() {
   const actualSelectedSort = STORAGE.actualSort
   return `
     <div class="flex justify-between task_show container">
-      <label for="js-sort">Sort</label>
+      <label for="js-sort" class="sort-show">Sort</label>
 
       <select id="js-sort" class="select-sort__input">
           <option ${actualSelectedSort == "Alphabetical (a-z)"? `selected`: ""} value="Alphabetical (a-z)">Alphabetical (a-z)</option>

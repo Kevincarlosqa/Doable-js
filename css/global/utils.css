@@ -185,3 +185,22 @@
 .task__date_completed{
   color: #D1D5DB;
 }
+
+.show_label{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #374151;
+}
+.show-div{
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sort-show{
+  font-weight: 500;
+  font-size: 14px;
+  color: #374151;
+}
